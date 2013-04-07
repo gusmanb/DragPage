@@ -40,7 +40,7 @@ The basics are really simple:
 
 -Drag is limied to one object simultaneously (you cannot drag multiple items) BUT, you can drag ANY control, so you can group your controls inside a Panel and drag it (see BeginItemDrag in DragPage).
 -If the dragged item has a RenderTransform applied to it, the dragged image will be incorrect.
-
+-The page root container must be a panel (grid, canvas...) or it will not work
 *Why you did this?
 
 Ok, i'm programming some Windows Store applications, and in one of them I wanted to drag and drop some images.
