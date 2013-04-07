@@ -33,14 +33,15 @@ The basics are really simple:
 	1-Add the DragPage.IsDragable property to the controls you want to drag.
 	2-Add the DragPage.IsDropTarget to the controls who admit drop.
 	3-Attach to the DragBegin event if necessary. This event allows to cancel a drag before it starts.
-	4-Attach to the DragEnd event. The arguments hold the source and the target of the operation
+	4-Attach to the DragEnd event. The arguments hold the source and the target of the operation.
 	5-Done!
 
 *Known limitations?
 
 -Drag is limied to one object simultaneously (you cannot drag multiple items) BUT, you can drag ANY control, so you can group your controls inside a Panel and drag it (see BeginItemDrag in DragPage).
 -If the dragged item has a RenderTransform applied to it, the dragged image will be incorrect.
--The page root container must be a panel (grid, canvas...) or it will not work
+-The page root container must be a panel (grid, canvas...) or it will not work.
+
 *Why you did this?
 
 Ok, i'm programming some Windows Store applications, and in one of them I wanted to drag and drop some images.
