@@ -1,0 +1,22 @@
+﻿<drag:DragPage
+    x:Class="DragTest.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DragTest"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:drag="using:DragControls"
+    mc:Ignorable="d" EnableDragging="True" DragBegin="MainPage_DragBegin" DragEnd="MainPage_DragEnd">
+    <Grid Background="Yellow">
+        <Rectangle Margin="90,-90,0,0" Width="100" Height="100" HorizontalAlignment="Left" Fill="Blue" drag:DragPage.IsDropTarget="True" drag:DragPage.IsDragable="True" Name="Azul"/>
+        <Viewbox>
+            <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}" Width="2048" Height="1900">
+                <Grid drag:DragPage.IsDragable="True" drag:DragPage.IsDropTarget="True" Name="ContieneLosRecuadros" Width="500" Height="500" Background="Aquamarine">
+                    <TextBlock Text="Cacaa!!" Foreground="Bisque"  FontFamily="Arial" FontSize="130"/>
+                    <Rectangle Margin="100,100,20,0" Width="200" Height="100"  HorizontalAlignment="Center" Fill="Beige" Name="FeoQueTeCagas"  drag:DragPage.IsDropTarget="True" drag:DragPage.IsDragable="True" />
+                    <Rectangle Margin="90,-90,0,0" Width="100" Height="100" HorizontalAlignment="Left" Fill="Red"  drag:DragPage.IsDropTarget="True" drag:DragPage.IsDragable="True" Name="Rojo"/>
+                </Grid>
+            </Grid>
+        </Viewbox>
+    </Grid>
+</drag:DragPage>
