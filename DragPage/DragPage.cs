@@ -26,7 +26,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
-using WinRTXamlToolkit.Composition;
+
 
 namespace DragControls
 {
@@ -337,7 +337,7 @@ namespace DragControls
         /// </summary>
         /// <param name="Element"></param>
         /// <param name="Pointer"></param>
-        public void BeginItemDrag(FrameworkElement Element, Pointer Pointer)
+        public async void BeginItemDrag(FrameworkElement Element, Pointer Pointer)
         {
 
             FrameworkElement fw = Element;
@@ -356,12 +356,20 @@ namespace DragControls
 
             page.dragging = true;
 
-            MemoryStream ms = WinRTXamlToolkit.Composition.WriteableBitmapRenderExtensions.RenderToStream(fw);
-            MemoryRandomAccessStream mms = new MemoryRandomAccessStream(ms);
-            WriteableBitmap bmp = new WriteableBitmap(1, 1);
-            bmp.SetSource(mms);
-            bmp.Invalidate();
-            mms.Dispose();
+            
+         var renderTargetBitmap = new RenderTargetBitmap();
+         await renderTargetBitmap.RenderAsync(fw);
+
+         var pixelBuffer = await renderTargetBitmap.GetPixelsAsync();
+         var width = renderTargetBitmap.PixelWidth;
+         var height = renderTargetBitmap.PixelHeight;
+        // var wbmp = await new WriteableBitmap(1, 1).FromPixelBuffer(pixelBuffer, width, height);
+        
+         
+         
+
+
+            WriteableBitmap bmp = await new WriteableBitmap(1, 1).FromPixelBuffer(pixelBuffer, width, height);
 
             Image img = new Image();
             img.Source = bmp;
